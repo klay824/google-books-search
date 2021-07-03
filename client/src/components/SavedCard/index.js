@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 
-function SavedCard({ title, author, description, image, link }) {
+function SavedCard({ title, author, description, image, link, handleBookDelete }) {
     return (
         <Card variant="outlined">
             <CardContent>
@@ -19,7 +19,7 @@ function SavedCard({ title, author, description, image, link }) {
                     <img src={image}></img>
                     <CardActions>
                         <Button size="small" href={link} target="_blank">View</Button>
-                        <Button size="small">Delete</Button>
+                        <Button size="small" onClick={handleBookDelete}>Delete</Button>
                     </CardActions>
 
                 </Card>

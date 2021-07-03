@@ -32,7 +32,7 @@ function Saved() {
         <>
             <Heading />
             {books.map(book => (
-                <SavedCard key={book._id} title={book.title} author={book.author} description={book.description} image={book.image} link={book.link}></SavedCard>
+                <SavedCard key={book._id} title={book.title} author={book.author} description={book.description} image={book.image} link={book.link} handleBookDelete={() => deleteBook(book._id)}></SavedCard>
             ))}
 
         </>
