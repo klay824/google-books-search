@@ -14,8 +14,8 @@ function SavedCard({ title, author, description, image, link, handleBookDelete }
             <CardContent>
                 <Card variant="outlined">
                     <CardContent>{title}</CardContent>
-                    <CardContent>{author}</CardContent>
-                    <CardContent>{description}</CardContent>
+                    <CardContent>Author: {author}</CardContent>
+                    <CardContent>Description: {description}</CardContent>
                     <img src={image}></img>
                     <CardActions>
                         <Button size="small" href={link} target="_blank">View</Button>
