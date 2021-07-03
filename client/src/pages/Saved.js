@@ -1,8 +1,9 @@
 import React from "react";
+import SavedCard from "../components/SavedCard.js";
 
 function Saved() {
     return (
-        <p>Saved page loading!</p>
+        <SavedCard />
     )
 }
 
