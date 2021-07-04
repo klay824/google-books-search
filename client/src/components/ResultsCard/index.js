@@ -4,7 +4,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 
-function ResultsCard() {
+function ResultsCard(props) {
     return (
         <Card variant="outlined">
             <CardContent>
