@@ -6,7 +6,7 @@ import API from "../utils/API";
 
 function Search() {
     const [search, setSearch] = useState("Star Wars");
-    const [results, setResults] = useState("");
+    const [results, setResults] = useState([]);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function Search() {
 
         API.callGoogle(search)
             .then(res => {
-                console.log(res);
+                console.log("response", res);
                 if (res.data.items.length === 0) {
                     throw new Error("No results found.");
                 }
@@ -24,14 +24,18 @@ function Search() {
             })
             .catch(err => setError(err));
     }, [search]);
-    console.log(results);
+    console.log("results", results);
 
     return (
         <div>
             <Heading />
             <SearchForm
             />
-            <ResultsCard />
+            {results.map(result => (
+                <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} author={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks.thumbnail} link={result.volumeInfo.infoLink} />
+
+            ))}
+
         </div>
     )
 }
