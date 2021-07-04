@@ -31,12 +31,18 @@ function Search() {
         setSearch(event.target.value);
     }
 
-    function handleSave(event) {
-        event.preventDefault();
-        console.log(results);
+    const handleSave = (index) => {
+        console.log([index]);
+        console.log(results[index].volumeInfo);
         API.saveBook({
-
-        }).catch((err) => console.log(err));
+            title: results[index].volumeInfo.title,
+            author: results[index].volumeInfo.authors,
+            description: results[index].volumeInfo.description,
+            image: results[index].volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : results[index].volumeInfo.imageLinks.thumbnail,
+            link: results[index].volumeInfo.infoLink
+        })
+            .then(res => console.log("Successful save to database.", res))
+            .catch(err => console.log("this is an error", err))
     }
 
     return (
@@ -45,8 +51,8 @@ function Search() {
             <SearchForm
                 results={search} handleInputChange={handleInputChange}
             />
-            {results.map(result => (
-                <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} author={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={handleSave} />
+            {results.map((result, i) => (
+                <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} author={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(i)} />
 
             ))}
 
