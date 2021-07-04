@@ -1,62 +1,43 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Heading from "../components/Heading";
 import SearchForm from "../components/Form";
 import ResultsCard from "../components/ResultsCard";
 import API from "../utils/API";
 
-class Search extends React.Component {
-    state = {
-        value: "",
-        books: []
-    };
+function Search() {
+    const [search, setSearch] = useState("Star Wars");
+    const [results, setResults] = useState("");
+    const [error, setError] = useState("");
 
-    componentDidMount() {
-        this.searchBook();
-    }
-
-    makeBook = bookData => {
-        return {
-            _id: bookData.id,
-            title: bookData.volumeInfo.title,
-            authors: bookData.volumeInfo.authors,
-            description: bookData.volumeInfo.description,
-            image: bookData.volumeInfo.imageLinks.thumbnail,
-            link: bookData.volumeInfo.previewLink
+    useEffect(() => {
+        if (!search) {
+            return;
         }
-    }
 
-    searchBook = query => {
-        API.callGoogle(query)
-            .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
-            .catch(err => console.error(err));
-    };
+        API.callGoogle(search)
+            .then(res => {
+                console.log(res);
+                if (res.data.items.length === 0) {
+                    throw new Error("No results found.");
+                }
+                setResults(res.data.items);
+            })
+            .catch(err => setError(err));
+    }, [search]);
+    console.log(results);
 
-    handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.searchBook(this.state.search);
-    };
-
-    render() {
-        return (
-            <div>
-                <Heading />
-                <SearchForm
-                    search={this.state.search}
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                />
-                <ResultsCard books={this.state.books} />
-            </div>
-        )
-    }
+    return (
+        <div>
+            <Heading />
+            <SearchForm
+            />
+            <ResultsCard />
+        </div>
+    )
 }
 
 export default Search;
+
+
+
+
