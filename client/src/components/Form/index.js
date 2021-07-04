@@ -2,9 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 // import Divider from '@material-ui/core/Divider';
-import TextField from "@material-ui/core/TextField";
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
+// import TextField from "@material-ui/core/TextField";
+// import IconButton from '@material-ui/core/IconButton';
+// import SearchIcon from '@material-ui/icons/Search';
 // import BookIcon from '@material-ui/icons/Book';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,26 +16,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SearchForm({ search, handleFormSubmit, handleInputChange }) {
+function SearchForm({ search, handleInputChange }) {
     const classes = useStyles();
 
     return (
         <Paper className={classes.root}>
-            <form>
+            <form className="search">
                 <div className="form-group">
-                    <label htmlFor="search">Search:</label>
+                    <label htmlFor="language">Search Term:</label>
                     <input
-                        onChange={handleInputChange}
                         value={search}
-                        name="search"
+                        onChange={handleInputChange}
+                        name="term"
+                        list="term"
                         type="text"
                         className="form-control"
-                        placeholder="Search for a Gif"
-                        id="search"
+                        placeholder="Type in a search term to begin"
+                        id="term"
                     />
-                    <button onClick={handleFormSubmit} className="btn btn-primary mt-3">
-                        Search
-                    </button>
                 </div>
             </form>
         </Paper>

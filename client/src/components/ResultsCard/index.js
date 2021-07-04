@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     },
 });
 
-function Search({ title, author, description, image, link }) {
+function Search({ title, author, description, image, link, handleSave }) {
     const classes = useStyles();
     return (
         <Card variant="outlined">
@@ -38,7 +38,7 @@ function Search({ title, author, description, image, link }) {
 
                     <CardActions>
                         <Button size="small" href={link} target="_blank">View</Button>
-                        <Button size="small" >Save</Button>
+                        <Button size="small" onClick={handleSave}>Save</Button>
                     </CardActions>
 
                 </Card>
