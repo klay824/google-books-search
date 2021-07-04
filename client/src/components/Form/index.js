@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SearchForm() {
+function SearchForm({ getResults, handleFormSubmit }) {
     const classes = useStyles();
 
     return (
@@ -36,12 +36,13 @@ function SearchForm() {
                 className={classes.input}
                 placeholder="Search Google Books"
                 inputProps={{ 'aria-label': 'search google books' }}
+
             />
-            <IconButton type="submit" className={classes.iconButton} aria-label="search">
+            <IconButton type="submit" onClick={handleFormSubmit} className={classes.iconButton} aria-label="search">
                 <SearchIcon />
             </IconButton>
             <Divider className={classes.divider} orientation="vertical" />
-            <IconButton color="primary" className={classes.iconButton} aria-label="directions">
+            <IconButton color="primary" className={classes.iconButton} aria-label="books">
                 <BookIcon />
             </IconButton>
         </Paper>
