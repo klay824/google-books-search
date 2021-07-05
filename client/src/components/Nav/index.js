@@ -10,7 +10,7 @@ function Nav() {
         <AppBar position="static" color="default">
             <Tabs>
                 <Tab label="Google Books" disabled />
-                <Link to="/search" className={location.pathname === "/search"}>
+                <Link to="/" className={location.pathname === "/"}>
                     <Tab label="Search" />
                 </Link>
                 <Link to="/saved" className={location.pathname === "/saved"}>
