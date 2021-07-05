@@ -17,13 +17,17 @@ const useStyles = makeStyles({
     },
 });
 
-function Search({ title, author, description, image, link, handleSave }) {
+function Search({ title, authors, description, image, link, handleSave, index }) {
     const classes = useStyles();
     return (
         <CardContent>
             <Card variant="outlined">
                 <CardContent>{title}</CardContent>
-                <CardContent>Author(s): {author}</CardContent>
+                <CardContent>Author(s):&nbsp;&nbsp;
+                    {authors.map((author, index) => (
+                        <span>{author}{index < authors.length - 1 ? ',' : ''}</span>
+                    ))}
+                </CardContent>
                 <CardContent>Description: {description}</CardContent>
 
                 <CardMedia

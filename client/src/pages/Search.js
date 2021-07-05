@@ -58,7 +58,7 @@ function Search() {
                     <h3>Results</h3>
                 </CardContent>
                 {results.map((result, index) => (
-                    <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} author={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
+                    <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} authors={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
                 ))}
             </Card>
         </div>
