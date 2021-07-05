@@ -20,30 +20,25 @@ const useStyles = makeStyles({
 function SavedCard({ title, author, description, image, link, handleBookDelete }) {
     const classes = useStyles();
     return (
-        <Card variant="outlined">
-            <CardContent>
-                <h5>Saved Books</h5>
-            </CardContent>
-            <CardContent>
-                <Card variant="outlined">
-                    <CardContent>{title}</CardContent>
-                    <CardContent>Author: {author}</CardContent>
-                    <CardContent>Description: {description}</CardContent>
+        <CardContent>
+            <Card variant="outlined">
+                <CardContent>{title}</CardContent>
+                <CardContent>Author: {author}</CardContent>
+                <CardContent>Description: {description}</CardContent>
 
-                    <CardMedia
-                        className={classes.media}
-                        image={image}
-                        title={title}
-                    />
+                <CardMedia
+                    className={classes.media}
+                    image={image}
+                    title={title}
+                />
 
-                    <CardActions>
-                        <Button size="small" href={link} target="_blank">View</Button>
-                        <Button size="small" onClick={handleBookDelete}>Delete</Button>
-                    </CardActions>
+                <CardActions>
+                    <Button size="small" href={link} target="_blank">View</Button>
+                    <Button size="small" onClick={handleBookDelete}>Delete</Button>
+                </CardActions>
 
-                </Card>
-            </CardContent>
-        </Card >
+            </Card>
+        </CardContent>
     )
 }
 

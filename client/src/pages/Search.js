@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Heading from "../components/Heading";
 import SearchForm from "../components/Form";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import ResultsCard from "../components/ResultsCard";
 import API from "../utils/API";
 
@@ -51,11 +53,14 @@ function Search() {
             <SearchForm
                 results={search} handleInputChange={handleInputChange}
             />
-            {results.map((result, i) => (
-                <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} author={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(i)} />
-
-            ))}
-
+            <Card variant="outlined" >
+                <CardContent>
+                    <h3>Results</h3>
+                </CardContent>
+                {results.map((result, index) => (
+                    <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} author={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
+                ))}
+            </Card>
         </div>
     )
 }

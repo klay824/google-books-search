@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import API from "../utils/API";
 
 import Heading from "../components/Heading";
@@ -31,10 +33,14 @@ function Saved() {
     return (
         <>
             <Heading />
-            {books.map(book => (
-                <SavedCard key={book._id} title={book.title} author={book.author} description={book.description} image={book.image} link={book.link} handleBookDelete={() => deleteBook(book._id)}></SavedCard>
-            ))}
-
+            <Card variant="outlined">
+                <CardContent>
+                    <h3>Saved Books</h3>
+                </CardContent>
+                {books.map(book => (
+                    <SavedCard key={book._id} title={book.title} author={book.author} description={book.description} image={book.image} link={book.link} handleBookDelete={() => deleteBook(book._id)}></SavedCard>
+                ))}
+            </Card>
         </>
     );
 }
