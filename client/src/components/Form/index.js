@@ -1,43 +1,70 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-// import Divider from '@material-ui/core/Divider';
-// import TextField from "@material-ui/core/TextField";
-// import IconButton from '@material-ui/core/IconButton';
-// import SearchIcon from '@material-ui/icons/Search';
-// import BookIcon from '@material-ui/icons/Book';
+import InputBase from '@material-ui/core/InputBase';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        width: "98%"
     },
+    input: {
+        marginLeft: theme.spacing(1),
+        paddingTop: "5px",
+        paddingBottom: "5px",
+        flex: 1,
+    },
+    text: {
+        fontFamily: "Arial, Helvetica, sans-serif",
+        color: "white"
+    },
+    background: {
+        backgroundColor: "rgb(44, 122, 109)",
+    }
 }));
 
 function SearchForm({ search, handleInputChange }) {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.root}>
-            <form className="search">
-                <div className="form-group">
-                    <label htmlFor="language">Search Term:</label>
-                    <input
+        <Card variant="outlined" className={classes.background}>
+            <CardContent><h2 className={classes.text}>Search</h2></CardContent>
+            <CardContent>
+                <Paper className={classes.root}>
+                    <InputBase
+                        className={classes.input}
+                        placeholder="Type Your Book Here"
                         value={search}
                         onChange={handleInputChange}
                         name="term"
                         list="term"
                         type="text"
-                        className="form-control"
-                        placeholder="Type in a search term to begin"
                         id="term"
                     />
-                </div>
-            </form>
-        </Paper>
+                </Paper>
+            </CardContent>
+        </Card>
     );
 }
 
 export default SearchForm;
+
+{/* <form className="search">
+    <div className="form-group">
+        <label htmlFor="language">Search Term:</label>
+        <input
+            value={search}
+            onChange={handleInputChange}
+            name="term"
+            list="term"
+            type="text"
+            className="form-control"
+            placeholder="Type in a search term to begin"
+            id="term"
+        />
+    </div>
+</form> */}
