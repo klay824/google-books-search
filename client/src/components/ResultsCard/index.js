@@ -43,7 +43,7 @@ function Search({ title, authors, description, image, link, handleSave }) {
                 <CardContent className={classes.text}>Author(s):&nbsp;&nbsp;
                     {authors === undefined ? "There are no authors for this title." :
                         authors.map((author, index) => (
-                            <span> {author}{index < authors.length - 1 ? ',' : ''}</span>
+                            <span key={index}>  {author}{index < authors.length - 1 ? ',' : ''}</span>
                         ))}
                 </CardContent>
                 <Grid container spacing={3}>

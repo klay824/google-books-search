@@ -19,7 +19,8 @@ function Search() {
     const [search, setSearch] = useState("Star Wars");
     const [results, setResults] = useState([]);
     const [error, setError] = useState("");
-    const [redirect, setRedirect] = useState(false);
+
+    console.log(error);
 
     useEffect(() => {
         if (!search) {
@@ -69,7 +70,7 @@ function Search() {
                     <h2>Results</h2>
                 </CardContent>
                 {results.map((result, index) => (
-                    <ResultsCard key={result.volumeInfo.infoLink} title={result.volumeInfo.title} authors={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
+                    <ResultsCard key={index} title={result.volumeInfo.title} authors={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
                 ))}
             </Card>
         </div>

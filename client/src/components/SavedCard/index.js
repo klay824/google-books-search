@@ -41,7 +41,7 @@ function SavedCard({ title, authors, description, image, link, handleBookDelete 
                 <CardContent><h2 className={classes.text}><em>{title}</em></h2></CardContent>
                 <CardContent className={classes.text}>Author(s):&nbsp;&nbsp;
                     {authors.map((author, index) => (
-                        <span> {author}{index < authors.length - 1 ? ',' : ''}</span>
+                        <span key={index}> {author}{index < authors.length - 1 ? ',' : ''}</span>
                     ))}
                 </CardContent>
                 <Grid container spacing={3}>

@@ -52,19 +52,3 @@ function SearchForm({ search, handleInputChange }) {
 }
 
 export default SearchForm;
-
-{/* <form className="search">
-    <div className="form-group">
-        <label htmlFor="language">Search Term:</label>
-        <input
-            value={search}
-            onChange={handleInputChange}
-            name="term"
-            list="term"
-            type="text"
-            className="form-control"
-            placeholder="Type in a search term to begin"
-            id="term"
-        />
-    </div>
-</form> */}
