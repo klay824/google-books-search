@@ -48,7 +48,7 @@ function Saved() {
                     <h2>Saved Books</h2>
                 </CardContent>
                 {books.map(book => (
-                    <SavedCard key={book._id} title={book.title} authors={book.author} description={book.description} image={book.image} link={book.link} handleBookDelete={() => deleteBook(book._id)}></SavedCard>
+                    <SavedCard key={book._id} title={book.title} authors={book.author} genres={book.genre} description={book.description} image={book.image} link={book.link} handleBookDelete={() => deleteBook(book._id)}></SavedCard>
                 ))}
             </Card>
         </>

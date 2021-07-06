@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     }
 });
 
-function Search({ title, authors, description, image, link, handleSave }) {
+function Search({ title, authors, genres, description, image, link, handleSave }) {
     const classes = useStyles();
     return (
 
@@ -44,6 +44,12 @@ function Search({ title, authors, description, image, link, handleSave }) {
                     {authors === undefined ? "There are no authors for this title." :
                         authors.map((author, index) => (
                             <span key={index}>  {author}{index < authors.length - 1 ? ',' : ''}</span>
+                        ))}
+                </CardContent>
+                <CardContent className={classes.text}>Genre(s):&nbsp;&nbsp;
+                    {genres === undefined ? "There are no matches for this genre." :
+                        genres.map((genre, index) => (
+                            <span key={index}>  {genre}{index < genres.length - 1 ? ',' : ''}</span>
                         ))}
                 </CardContent>
                 <Grid container spacing={3}>

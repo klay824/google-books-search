@@ -37,7 +37,7 @@ function SearchForm({ search, handleInputChange }) {
                 <Paper className={classes.root}>
                     <InputBase
                         className={classes.input}
-                        placeholder="Type Your Book Here"
+                        placeholder="Search by title, author, or genre..."
                         value={search}
                         onChange={handleInputChange}
                         name="term"

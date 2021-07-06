@@ -16,7 +16,7 @@ function Nav() {
 
     return (
         <AppBar position="static" color="default">
-            <Tabs value={value} onChange={handleChange} indicatorColor="default">
+            <Tabs value={value} onChange={handleChange} indicatorColor="secondary">
                 <Tab label="Google Books" disabled />
 
                 <Tab label="Search" component={Link} to="/" />

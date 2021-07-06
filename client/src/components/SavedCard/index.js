@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     }
 });
 
-function SavedCard({ title, authors, description, image, link, handleBookDelete }) {
+function SavedCard({ title, authors, genres, description, image, link, handleBookDelete }) {
     const classes = useStyles();
     return (
         <CardContent className={classes.background}>
@@ -43,6 +43,12 @@ function SavedCard({ title, authors, description, image, link, handleBookDelete 
                     {authors.map((author, index) => (
                         <span key={index}> {author}{index < authors.length - 1 ? ',' : ''}</span>
                     ))}
+                </CardContent>
+                <CardContent className={classes.text}>Genre(s):&nbsp;&nbsp;
+                    {genres === undefined ? "There are no matches for this genre." :
+                        genres.map((genre, index) => (
+                            <span key={index}>  {genre}{index < genres.length - 1 ? ',' : ''}</span>
+                        ))}
                 </CardContent>
                 <Grid container spacing={3}>
                     <Grid item xs={12} m={6} lg={4} xl={4}>

@@ -49,6 +49,7 @@ function Search() {
         API.saveBook({
             title: results[index].volumeInfo.title,
             author: results[index].volumeInfo.authors,
+            genre: results[index].volumeInfo.categories,
             description: results[index].volumeInfo.description,
             image: results[index].volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : results[index].volumeInfo.imageLinks.thumbnail,
             link: results[index].volumeInfo.infoLink
@@ -70,7 +71,7 @@ function Search() {
                     <h2>Results</h2>
                 </CardContent>
                 {results.map((result, index) => (
-                    <ResultsCard key={index} title={result.volumeInfo.title} authors={result.volumeInfo.authors} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
+                    <ResultsCard key={index} title={result.volumeInfo.title} authors={result.volumeInfo.authors} genres={result.volumeInfo.categories} description={result.volumeInfo.description} image={result.volumeInfo.imageLinks === undefined ? "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical-200x300.jpg" : `${result.volumeInfo.imageLinks.thumbnail}`} link={result.volumeInfo.infoLink} handleSave={() => handleSave(index)} />
                 ))}
             </Card>
         </div>
